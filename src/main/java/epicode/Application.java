@@ -1,10 +1,7 @@
 package epicode;
 
 import com.github.javafaker.Faker;
-import epicode.dao.AttendancesDAO;
-import epicode.dao.EventsDAO;
-import epicode.dao.LocationsDAO;
-import epicode.dao.PeopleDAO;
+import epicode.dao.*;
 import epicode.entities.*;
 
 import javax.persistence.EntityManager;
@@ -34,8 +31,8 @@ public class Application {
         Location location2 = new Location(faker.address().city(), faker.address().cityName());
          locationsDAO.save(location2);
 
-        Person person1 = new Person(faker.name().firstName(), faker.name().lastName(), faker.internet().emailAddress(),  LocalDate.now(), rndm.nextInt(0, 2) == 0 ? 'M' : 'F');
-         peopleDAO.save(person1);
+//        Person person1 = new Person(faker.name().firstName(), faker.name().lastName(), faker.internet().emailAddress(),  LocalDate.now(), rndm.nextInt(0, 2) == 0 ? 'M' : 'F');
+//         peopleDAO.save(person1);
 
 /*        for (int i = 0; i < 20; i++) {
             eventsDAO.save(new Event(
@@ -67,6 +64,10 @@ public class Application {
         // Eliminando un evento dovrebbe eliminare anche le partecipazioni ad esso collegate
 //        eventsDAO.findByIdAndDelete(24);
 
+
+        Location l1 = new Location(faker.address().city(), faker.address().cityName());
+        PartitaDiCalcio e1 = new PartitaDiCalcio("title", LocalDate.parse("2022-02-02"), "description", TipoEvento.PUBBLICO, 100, location1, "Bob", "Foo", 2, 4);
+//        PartitaDiCalcioDAO.save(e1);
 
         em.close();
         emf.close();

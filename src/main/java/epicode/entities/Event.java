@@ -6,7 +6,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "eventi")
-public class Event {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorColumn(name = "type_event")
+@NamedQuery(name = "findByName", query = "SELECT a FROM Event a WHERE a.titolo = :titolo")
+public abstract class Event {
     @Id
     @GeneratedValue
     private long id;

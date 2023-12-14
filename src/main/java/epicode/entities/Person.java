@@ -6,6 +6,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "persone")
+
+
 public class Person {
 	@Id
 	@GeneratedValue
